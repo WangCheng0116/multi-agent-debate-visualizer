@@ -2,6 +2,8 @@
 
 A real-time visualization tool for multi-agent debates powered by AutoGen. Create agent networks, define communication topology, and watch AI agents debate topics with animated message flows.
 
+<video src="assets/demo.mp4" controls width="100%"></video>
+
 ## Features
 
 - **Visual Graph Editor** - Drag-and-drop agent nodes, draw directed edges
