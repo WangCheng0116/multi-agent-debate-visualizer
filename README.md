@@ -2,7 +2,7 @@
 
 A real-time visualization tool for multi-agent debates powered by AutoGen. Create agent networks, define communication topology, and watch AI agents debate topics with animated message flows.
 
-https://github.com/WangCheng0116/multi-agent-debate-visualizer/raw/main/assets/demo.mp4
+https://github.com/user-attachments/assets/3f96f016-bda6-472f-982d-4efeb9a7f60d
 
 ## Features
 
