@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Multi-Agent Debate Visualizer</title>
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div>
+        <h1>Multi-Agent Debate</h1>
+        <p class="subtitle">Visualize agent communication in real-time</p>
+      </div>
+      <div class="header-controls">
+        <label class="control-group">
+          <span>Rounds</span>
+          <input id="rounds-slider" type="range" min="1" max="10" value="3" />
+          <span id="rounds-value">3</span>
+        </label>
+        <label class="control-group">
+          <span>API Key</span>
+          <input id="api-key" type="password" placeholder="sk-..." />
+        </label>
+        <button id="run-debate-btn" class="run-button">Run Debate</button>
+        <button id="theme-toggle" class="theme-toggle-button">Theme</button>
+      </div>
+    </header>
+
+    <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+    <main class="layout">
+      <aside class="sidebar">
+        <h2>Question</h2>
+        <div class="question-form">
+          <textarea
+            id="question-input"
+            rows="5"
+            placeholder="Enter the debate question..."
+          ></textarea>
+        </div>
+
+        <h2>Agents</h2>
+        <div class="add-agent-form">
+          <input id="new-agent-name" type="text" placeholder="Agent name..." />
+          <button id="add-agent-btn">Add</button>
+        </div>
+        <ul id="agent-list" class="agent-list">
+          <!-- Agent items will be populated by script -->
+        </ul>
+      </aside>
+
+      <div id="sidebar-splitter" class="splitter splitter-vertical" aria-hidden="true"></div>
+
+      <section class="canvas-panel">
+        <svg id="graph-canvas" viewBox="0 0 900 400" role="img" aria-label="Agent graph"></svg>
+      </section>
+
+      <aside class="details-panel">
+        <h2>Agent</h2>
+        <div id="agent-details-empty" class="agent-details-empty">
+          <p class="subtitle">Select an agent to edit its name and system prompt.</p>
+        </div>
+        <div id="agent-details-form" class="agent-details-form is-hidden">
+          <label class="form-field">
+            <span>Name</span>
+            <input id="agent-name-input" type="text" placeholder="Agent name" />
+          </label>
+          <label class="form-field">
+            <span>System prompt</span>
+            <textarea
+              id="agent-prompt-input"
+              rows="8"
+              placeholder="Enter the system prompt..."
+            ></textarea>
+          </label>
+          <label class="form-field">
+            <div class="form-field-header">
+              <span>Temperature</span>
+              <span id="agent-temperature-value" class="form-field-value">0.8</span>
+            </div>
+            <input
+              id="agent-temperature-input"
+              type="range"
+              min="0"
+              max="2"
+              step="0.05"
+              value="0.8"
+            />
+          </label>
+        </div>
+      </aside>
+    </main>
+
+    <div id="messages-splitter" class="splitter splitter-horizontal" aria-hidden="true"></div>
+
+    <section class="messages-panel">
+      <div class="messages-header">
+        <h2>Messages</h2>
+        <span id="message-count" class="message-count">0 messages</span>
+      </div>
+
+      <!-- Timeline Slider - shown only when replay available -->
+      <div id="timeline-slider-container" class="timeline-slider-container is-hidden">
+        <div class="timeline-slider-header">
+          <span class="timeline-label">Timeline</span>
+          <span id="timeline-position" class="timeline-position">Live</span>
+        </div>
+        <div class="timeline-slider-track">
+          <input
+            id="timeline-slider"
+            type="range"
+            min="0"
+            max="1000"
+            step="1"
+            value="1000"
+          />
+          <div id="timeline-markers" class="timeline-markers"></div>
+        </div>
+      </div>
+
+      <div id="message-log" class="message-log"></div>
+    </section>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
